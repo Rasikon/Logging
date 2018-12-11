@@ -3,9 +3,9 @@
 <configuration status="WARN">
   <appenders>
    <SMTP name="Mail" subject="Logging"
-              to="redreev.ivan@gmail.com" from= "redreev_ivan@mail.ru"
+              to="*******@gmail.com" from= "********@mail.ru"
               smtpHost="smtp.mail.ru" smtpPort="465" bufferSize="5" 
-              smtpUsername="redreev_ivan@mail.ru" smtpPassword="361629qaz+"
+              smtpUsername="*******@mail.ru" smtpPassword="*******"
               smtpProtocol="smtps"
 
         >
