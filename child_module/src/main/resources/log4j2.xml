@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration status="WARN">
+  <appenders>
+   <SMTP name="Mail" subject="Logging"
+              to="redreev.ivan@gmail.com" from= "redreev_ivan@mail.ru"
+              smtpHost="smtp.mail.ru" smtpPort="465" bufferSize="5" 
+              smtpUsername="redreev_ivan@mail.ru" smtpPassword="361629qaz+"
+              smtpProtocol="smtps"
+
+        >
+            <PatternLayout>
+                <Pattern>%d{dd MM yyyy HH:mm:ss,SSS}  - %msg%n</Pattern>
+            </PatternLayout>
+        </SMTP>
+
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+    </Console>
+
+    <File name="MyFile" fileName="C:\Testovik\child_module\target\logs\app.log">
+        <PatternLayout pattern="%d{yyyy-mm-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+    </File>             
+  </appenders>
+
+  <loggers>     
+    <root level="error">
+      <appender-ref ref="Console" level="info"/>
+      <appender-ref ref="MyFile" level="info"/>
+      <appender-ref ref="Mail" level="error"/>
+    </root>    
+  </loggers>
+</configuration>
