@@ -5,15 +5,15 @@ import org.apache.logging.log4j.Logger;
 
 public class User extends Thread {
     private boolean isActive = true;
-	public String nam = null;
+    private String nam = null;
     static final Logger rootLogger = LogManager.getLogger(User.class);
 
     public void run() {
-		this.isActive = true;
+        this.isActive = true;
         while (isActive) {
             try {
                 Thread.sleep(1000);
-                rootLogger.info("Hello "+nam);
+                rootLogger.info("Hello " + nam);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -23,12 +23,12 @@ public class User extends Thread {
     void stopActive() {
         this.isActive = false;
     }
-	
 
-	public String getNam() {
+
+    public String getNam() {
         return nam;
     }
-	
+
 
     public void setNam(String nam) {
         this.nam = nam;

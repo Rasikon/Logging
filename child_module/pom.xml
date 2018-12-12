@@ -9,10 +9,10 @@
     <name>child_module</name>
 
     <parent>
-    <groupId>com</groupId>
-    <artifactId>parent_module</artifactId>
-    <version>${my-version}</version>
-    <relativePath>../pom.xml</relativePath>
+        <groupId>com</groupId>
+        <artifactId>parent_module</artifactId>
+        <version>${my-version}</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
 </project>
