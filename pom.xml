@@ -16,7 +16,7 @@
 </plugins>
 </build>
 <activation>
-<activeByDefault>true</activeByDefault>
+<activeByDefault>false</activeByDefault>
 </activation>
 </profile>
 </profiles>
@@ -57,19 +57,25 @@
         </execution>
      </executions>
 </plugin>
+
 <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-jar-plugin</artifactId>
-    <configuration>
-        <archive>
-            <manifest>
-                <addClasspath>true</addClasspath>
-                <classpathPrefix>lib/</classpathPrefix>
-                <mainClass>hello.HelloWorld</mainClass>
-            </manifest>
-        </archive>
-    </configuration>
-</plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>3.2.2</version>
+            <configuration>
+                <failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
+        </plugin>
+		
+<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>		
 
   </plugins>
 </build>
@@ -98,7 +104,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <version>4.0.0</version>
         </dependency>
     </dependencies>
 </project>
