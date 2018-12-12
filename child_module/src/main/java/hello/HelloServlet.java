@@ -33,13 +33,13 @@ public class HelloServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("name");
-        if (user.getNam != name) {
-            user.stopActive();
-            user.setNam(name);
-            user.start();
+        user.stopActive();
+     String name = req.getParameter("name");
+	    user = new User();
+	    user.setNam(name);
+	    user.start();
         }
-    }
+    
 
 
     @Override
