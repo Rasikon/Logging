@@ -11,11 +11,7 @@ public class Sum extends Thread {
         while (HelloServlet.x.intValue() < 10000) {
             HelloServlet.x.incrementAndGet();
             rootLogger.info(Thread.currentThread().getName() + "  " + HelloServlet.x.intValue());
-			try{
-				Thread.sleep(1000);
-			}catch(InterruptedException e){
-				e.printStackTrace();
-			}	
+				
 			
         }
     }
