@@ -6,13 +6,13 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.io.PrintWriter;
-import javax.servlet.http.Cookie;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @WebServlet(urlPatterns = "/HelloWorldServlet")
 public class HelloServlet extends HttpServlet {
@@ -50,20 +50,20 @@ public class HelloServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try{
-		req.setCharacterEncoding("UTF-8");
-		resp.setContentType("text/html");  
-        PrintWriter out = resp.getWriter(); 
-        String name = req.getParameter("name");
-		out.print("Welcome "+name);
-		Cookie ck = new Cookie("ckname",name);
-		resp.addCookie(ck);
-        user.setNam(name);
-        out.close();
-		}catch(Exception e){
-			System.out.println(e);
-	}
-  }
+        try {
+            req.setCharacterEncoding("UTF-8");
+            resp.setContentType("text/html");
+            PrintWriter out = resp.getWriter();
+            String name = req.getParameter("name");
+            out.print("Welcome " + name);
+            Cookie ck = new Cookie("ckname", name);
+            resp.addCookie(ck);
+            user.setNam(name);
+            out.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
     @Override
     public void destroy() {
