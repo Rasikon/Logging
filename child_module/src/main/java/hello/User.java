@@ -13,7 +13,8 @@ public class User extends Thread {
         while (isActive) {
             try {
                 Thread.sleep(1000);
-                rootLogger.info("Hello " + nam);
+                if (nam != null)
+                    rootLogger.info("Hello " + nam);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -24,11 +25,9 @@ public class User extends Thread {
         this.isActive = false;
     }
 
-
     public String getNam() {
         return nam;
     }
-
 
     public void setNam(String nam) {
         this.nam = nam;

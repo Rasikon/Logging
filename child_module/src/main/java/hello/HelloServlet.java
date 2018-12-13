@@ -15,13 +15,15 @@ import java.io.IOException;
 public class HelloServlet extends HttpServlet {
     static final Logger rootLogger = LogManager.getLogger(HelloServlet.class);
     private HelloWorld hello = null;
-    private User user = new User();
+    private User user = null;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init();
         hello = new HelloWorld();
         hello.start();
+        user = new User();
+        user.start();
     }
 
     @Override
@@ -33,26 +35,23 @@ public class HelloServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        user.stopActive();
-	 req.setCharacterEncoding("UTF-8");
-     String name = req.getParameter("name");
-	    user = new User();
-	    user.setNam(name);
-	    user.start();
-		doGet(req,resp);
-        }
-    
-
+        req.setCharacterEncoding("UTF-8");
+        String name = req.getParameter("name");
+        user.setNam(name);
+        doGet(req, resp);
+    }
 
     @Override
     public void destroy() {
         if (hello != null) {
             hello.stopActive();
-		if (user != null) {
-			user.stopActive();
+            if (user != null) {
+                user.stopActive();
+            }
         }
+
     }
-}
+
 }
 
 
