@@ -10,12 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @WebServlet(urlPatterns = "/HelloWorldServlet")
 public class HelloServlet extends HttpServlet {
     static final Logger rootLogger = LogManager.getLogger(HelloServlet.class);
     private HelloWorld hello = null;
     private User user = null;
+    public static AtomicInteger x = new AtomicInteger(0);
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -24,6 +26,17 @@ public class HelloServlet extends HttpServlet {
         hello.start();
         user = new User();
         user.start();
+        Sum thread1 = new Sum();
+        thread1.start();
+        Sum thread2 = new Sum();
+        thread2.start();
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        rootLogger.info(x);
     }
 
     @Override
@@ -43,13 +56,10 @@ public class HelloServlet extends HttpServlet {
 
     @Override
     public void destroy() {
-        if (hello != null) {
+        if (hello != null)
             hello.stopActive();
-            if (user != null) {
-                user.stopActive();
-            }
-        }
-
+        if (user != null)
+            user.stopActive();
     }
 
 }

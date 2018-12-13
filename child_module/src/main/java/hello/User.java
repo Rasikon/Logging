@@ -12,9 +12,9 @@ public class User extends Thread {
         this.isActive = true;
         while (isActive) {
             try {
-                Thread.sleep(1000);
                 if (nam != null)
                     rootLogger.info("Hello " + nam);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

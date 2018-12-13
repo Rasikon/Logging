@@ -10,8 +10,8 @@ public class HelloWorld extends Thread {
     public void run() {
         while (isActive) {
             try {
-                Thread.sleep(1000);
                 rootLogger.info("Hello World!");
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
