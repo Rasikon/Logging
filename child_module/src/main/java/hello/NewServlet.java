@@ -12,15 +12,11 @@ public class NewServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) {
         try {
-
             resp.setContentType("text/html");
             PrintWriter out = resp.getWriter();
-
             Cookie ck[] = req.getCookies();
             out.print("Hello " + ck[0].getValue());
-
             out.close();
-
         } catch (Exception e) {
             System.out.println(e);
         }
