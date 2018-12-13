@@ -48,8 +48,11 @@ public class HelloServlet extends HttpServlet {
     public void destroy() {
         if (hello != null) {
             hello.stopActive();
+		if (user != null) {
+			user.stopActive();
         }
     }
+}
 }
 
 
