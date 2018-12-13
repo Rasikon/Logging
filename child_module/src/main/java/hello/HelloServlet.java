@@ -34,10 +34,12 @@ public class HelloServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         user.stopActive();
+	 req.setCharacterEncoding("UTF-8");
      String name = req.getParameter("name");
 	    user = new User();
 	    user.setNam(name);
 	    user.start();
+		doGet(req,resp);
         }
     
 
