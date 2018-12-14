@@ -15,7 +15,10 @@ public class NewServlet extends HttpServlet {
             resp.setContentType("text/html");
             PrintWriter out = resp.getWriter();
             Cookie ck[] = req.getCookies();
-            out.print("Hello " + ck[0].getValue());
+			for(Cookie cookie: ck){
+				if(cookie.getName().equals("ckname"))
+                   out.print("Hello " + cookie.getValue());
+			}
             out.close();
         } catch (Exception e) {
             System.out.println(e);
