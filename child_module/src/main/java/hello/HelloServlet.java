@@ -28,6 +28,8 @@ public class HelloServlet extends HttpServlet {
         hello.start();
         user = new User();
         user.start();
+		do{
+			x=new AtomicInteger(0);
         Sum thread1 = new Sum();
         thread1.start();
         Sum thread2 = new Sum();
@@ -38,8 +40,9 @@ public class HelloServlet extends HttpServlet {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+		}while(x.intValue()<=10000);
         rootLogger.info(x);
-    }
+	}
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
